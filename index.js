@@ -3,9 +3,11 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getDatabase, ref, push, onValue, remove } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js';
 
 const dbURL = import.meta.env.VITE_DB_URL;
+const projectId = import.meta.env.VITE_PROJECT_ID;
 
 const appSettings = {
   databaseURL: dbURL,
+  projectId: projectId,
 };
 
 const app = initializeApp(appSettings);
@@ -34,7 +36,7 @@ onValue(shoppingListInDB, (snapshot) => {
       let currentItem = item;
       appendItemToShoppingListEl(currentItem);
     });
-  }else {
+  } else {
     clearShoppingListEl();
     shoppingListEl.innerHTML = 'No items here... yet🤯';
   }
